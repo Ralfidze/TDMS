@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="TDMS">
+  <DataContextMoniker Name="/TDMSDataContext" />
+  <nestedChildShapes>
+    <classShape Id="92c7ffbf-559e-4e43-815d-4c041bd4a0bc" absoluteBounds="3.5, 1.125, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/TDMSDataContext/TUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b4a9f06-668d-4a1f-9ce2-e7305e4e0f16" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="397ff41f-4c71-4f96-9216-952a20f68296" absoluteBounds="9, 1.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/TDMSDataContext/TAttribute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4f73f40-e85e-43cc-9257-337725341f8a" absoluteBounds="9.015, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" absoluteBounds="6.25, 0.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/TDMSDataContext/TDocument" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6a6bb0c-5094-43ac-b739-438a7f6aeb26" absoluteBounds="6.265, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8a827e60-6613-4823-876b-2310060a8639" absoluteBounds="3.5, 4, 2, 1.193992513020834">
+      <DataClassMoniker Name="/TDMSDataContext/TDocumentStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c773491-2702-430d-aa07-d86459c437a5" absoluteBounds="3.515, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7791a089-5e81-4eeb-b161-463aed9d9d07" absoluteBounds="3.5, 5.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/TDMSDataContext/TDocumentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c356959e-301c-43f2-b74b-71dd3f70b335" absoluteBounds="3.515, 6.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03ee85a6-a394-473a-ab6c-38bebd9e957f" absoluteBounds="0.75, 1.375, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/TDMSDataContext/TRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c663783-2cd9-4805-a195-e8c66fa0c69f" absoluteBounds="0.765, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 2.03929768880208); (9 : 2.03929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TDocument/TDocument_TAttribute" />
+      <nodes>
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+        <classShapeMoniker Id="397ff41f-4c71-4f96-9216-952a20f68296" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.95923076923077 : 3.03049967447917); (6.95923076923077 : 3.28049967447917); (7.55461538461539 : 3.28049967447917); (7.55461538461539 : 3.03049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TDocument/TDocument_TDocument" />
+      <nodes>
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.01044840494792); (6.25 : 2.01044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TUser/TUser_TDocument" />
+      <nodes>
+        <classShapeMoniker Id="92c7ffbf-559e-4e43-815d-4c041bd4a0bc" />
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.59699625651042); (6.57336288461538 : 4.59699625651042); (6.57336288461538 : 3.03049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TDocumentStatus/TDocumentStatus_TDocument" />
+      <nodes>
+        <classShapeMoniker Id="8a827e60-6613-4823-876b-2310060a8639" />
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.56814697265625); (7.93356019230769 : 6.56814697265625); (7.93356019230769 : 3.03049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TDocumentType/TDocumentType_TDocument" />
+      <nodes>
+        <classShapeMoniker Id="7791a089-5e81-4eeb-b161-463aed9d9d07" />
+        <classShapeMoniker Id="ed0f8bbf-1b56-43a0-9ecd-6e46a96ab226" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.06814697265625); (3.5 : 2.06814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/TDMSDataContext/TRole/TRole_TUser" />
+      <nodes>
+        <classShapeMoniker Id="03ee85a6-a394-473a-ab6c-38bebd9e957f" />
+        <classShapeMoniker Id="92c7ffbf-559e-4e43-815d-4c041bd4a0bc" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

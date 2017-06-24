@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DocFlowDB" Class="TDMSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=DocFlowDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DocFlowDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TUsers" Member="TUsers">
+    <Type Name="TUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="TUser_TDocument" Member="TDocuments" ThisKey="ID" OtherKey="CreatorID" Type="TDocument" />
+      <Association Name="TRole_TUser" Member="TRole" ThisKey="RoleID" OtherKey="ID" Type="TRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAttributes" Member="TAttributes">
+    <Type Name="TAttribute">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DocumentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Attribute" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="TDocument_TAttribute" Member="TDocument" ThisKey="DocumentID" OtherKey="ID" Type="TDocument" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TDocuments" Member="TDocuments">
+    <Type Name="TDocument">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentDocunentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="TDocument_TAttribute" Member="TAttributes" ThisKey="ID" OtherKey="DocumentID" Type="TAttribute" />
+      <Association Name="TDocument_TDocument" Member="TDocuments" ThisKey="ID" OtherKey="ParentDocunentID" Type="TDocument" />
+      <Association Name="TDocument_TDocument" Member="TDocument1" ThisKey="ParentDocunentID" OtherKey="ID" Type="TDocument" IsForeignKey="true" />
+      <Association Name="TUser_TDocument" Member="TUser" ThisKey="CreatorID" OtherKey="ID" Type="TUser" IsForeignKey="true" />
+      <Association Name="TDocumentStatus_TDocument" Member="TDocumentStatus" ThisKey="StatusID" OtherKey="ID" Type="TDocumentStatus" IsForeignKey="true" />
+      <Association Name="TDocumentType_TDocument" Member="TDocumentType" ThisKey="TypeID" OtherKey="ID" Type="TDocumentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TDocumentStatus" Member="TDocumentStatus">
+    <Type Name="TDocumentStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="TDocumentStatus_TDocument" Member="TDocuments" ThisKey="ID" OtherKey="StatusID" Type="TDocument" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TDocumentTypes" Member="TDocumentTypes">
+    <Type Name="TDocumentType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="[View]" Member="View" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TDocumentType_TDocument" Member="TDocuments" ThisKey="ID" OtherKey="TypeID" Type="TDocument" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRoles" Member="TRoles">
+    <Type Name="TRole">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Label" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultDocumentType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TRole_TUser" Member="TUsers" ThisKey="ID" OtherKey="RoleID" Type="TUser" />
+    </Type>
+  </Table>
+</Database>
